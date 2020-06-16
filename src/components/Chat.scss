@@ -1,0 +1,29 @@
+
+.embed-submit-field{
+
+    position: relative !important;
+      
+      input {
+        width: 98%;
+        margin: 0 auto;
+      }
+      .send-message-btn {
+        position: absolute;
+        right: 0px;
+        top: 1px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: none;
+        background: #007bff;
+        border-radius: 3px;
+        
+        transition: all .2s;
+        
+        &:hover {
+          background-color: rgb(101, 168, 223);
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+    
