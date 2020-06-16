@@ -10,7 +10,6 @@ const customHistory = createBrowserHistory();
 
 function App({ location }) {
   useEffect(() => {});
-
   return (
     <div className="App">
       <Router history={customHistory} >
