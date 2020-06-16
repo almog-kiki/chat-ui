@@ -33,14 +33,60 @@ function HomePage() {
       setIsJoined(true);
       setIsLoading(false)
     } else{
-      // show alert
-      console.error("cannot join to chat")
+      alert("Error: Cannot join to chat");
     }
   };
 
-
   useEffect(() => {});
 
+
+  const drawForm = () =>{
+    return(
+      <Fragment>
+        { !isLoading && 
+          <div className="home-page">
+          <Formik
+            validationSchema={schema}
+            onSubmit={handleSubmit}
+            initialValues={userData}
+          >
+            { ({
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isInvalid,
+              errors,
+            }) => (
+              <Form noValidate onSubmit={handleSubmit}>
+                <Form.Row>
+                  <Form.Group as={Col} md="12" controlId="nickname">
+                    <Form.Label> {JOIN_NICKNAME_TITLE} </Form.Label>
+                    <Form.Control className="nickname-input"
+                      type="text"
+                      name="nickname"
+                      placeholder="Nickname"
+                      value={values.nickname || ""}
+                      onChange={handleChange}
+                      isInvalid={touched.Nickname && errors.Nickname}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.nickname} 
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Form.Row>
+                <Button type="submit" style={{ marginRight: "10px" }}>
+                  Join
+                </Button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      }
+    </Fragment>
+    )
+  }
 
   if (isJoined) {
     return <Chat userData={userData} />;
@@ -51,47 +97,7 @@ function HomePage() {
           isLoading && 
           Utils.drawLoading()
         }
-        { !isLoading && 
-            <div className="home-page">
-            <Formik
-              validationSchema={schema}
-              onSubmit={handleSubmit}
-              initialValues={userData}
-            >
-              { ({
-                handleSubmit,
-                handleChange,
-                handleBlur,
-                values,
-                touched,
-                isInvalid,
-                errors,
-              }) => (
-                <Form noValidate onSubmit={handleSubmit}>
-                  <Form.Row>
-                    <Form.Group as={Col} md="12" controlId="nickname">
-                      <Form.Label> {JOIN_NICKNAME_TITLE} </Form.Label>
-                      <Form.Control className="nickname-input"
-                        type="text"
-                        name="nickname"
-                        placeholder="Nickname"
-                        value={values.nickname || ""}
-                        onChange={handleChange}
-                        isInvalid={touched.Nickname && errors.Nickname}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.nickname} 
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form.Row>
-                  <Button type="submit" style={{ marginRight: "10px" }}>
-                    Join
-                  </Button>
-                </Form>
-              )}
-            </Formik>
-          </div>
-        }
+       { drawForm() }
       </Fragment>
       
     );

@@ -3,8 +3,9 @@ import React from "react";
 import * as Utils from '../lib/Utils';
 import "./ChatMessages.css";
 
-const ME_MESSAGE_CLASS_NAME = "my-message"
-const USERS_MESSAGE_CLASS_NAME = "users-message"
+const ME_MESSAGE_CLASS_NAME = "my-message";
+const USERS_MESSAGE_CLASS_NAME = "users-message";
+
 function ChatMessages({userData, messages}) {
     
     const isMyMessage = (messaegs) =>{

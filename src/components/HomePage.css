@@ -6,7 +6,6 @@
     margin: 0 auto;
     text-align: center;
 }
-
 .invalid-feedback{
-display: inline !important;
+    display: inline !important;
 }

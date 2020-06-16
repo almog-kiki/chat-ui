@@ -8,7 +8,7 @@ import ErrorPage from "./components/ErrorPage";
 import { createBrowserHistory } from "history";
 const customHistory = createBrowserHistory();
 
-function App({ location }) {
+function App() {
   useEffect(() => {});
   return (
     <div className="App">

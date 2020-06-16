@@ -4,12 +4,10 @@ import { Formik } from "formik";
 import  {Form, Col, Button } from "react-bootstrap";
 import * as yup from "yup";
 import io from "socket.io-client";
-import "./Chat.css";
 import "./Chat.scss";
 import ChatMessages from './ChatMessages';
 import * as API from "../lib/requests";
 import { getChatMessages, sendNewMessage } from "../lib/requests";
-import * as Utils from '../lib/Utils';
 const SOCKET_IO_URL = API.URL;
 const socket = io(SOCKET_IO_URL);
 
@@ -113,7 +111,7 @@ function Chat({userData}) {
     <div className="chat-page">
       <h1> Hello {userData.nickname}, have fun </h1>
       <ChatMessages messages={messages} userData={userData}/>
-      {drawForm()}
+      { drawForm() }
     </div>
   );
 }

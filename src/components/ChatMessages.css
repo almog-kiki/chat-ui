@@ -8,17 +8,17 @@
     direction: ltr;
 }
 .users-message{
-direction: rtl;
+    direction: rtl;
 }
 .gravatar-nickname-date{
-display: flex;
+    display: flex;
 }
 .nickname{
-font-weight: bold;
-margin: 0 10px;
+    font-weight: bold;
+    margin: 0 10px;
 }
 .content-row{
-width: 80%;
-margin: 0 auto !important;
-margin-bottom: 1em !important;
+    width: 80%;
+    margin: 0 auto !important;
+    margin-bottom: 1em !important;
 }
