@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export const URL = "https://intense-sea-52184.herokuapp.com";
+export const URL = "https://almog-chat-app-server.herokuapp.com";
 
 
 const errorRedirect = (error) => {
