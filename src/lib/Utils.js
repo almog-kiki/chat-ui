@@ -16,13 +16,8 @@ export const convertMySqlDate = (sqlDate) =>{
     return formatDate(new Date(sqlDate));
 }
 
-export const getUserData = () => {
-    return JSON.parse(localStorage.getItem("userData"));
-  };
-  
-
 export const drawLoading = () =>{
-return (
+    return (
         <div className="row">
             <div className="loader"> </div>
         </div>

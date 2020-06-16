@@ -18,6 +18,7 @@ const schema = yup.object({
 function HomePage() {
   const [isJoined, setIsJoined] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState({nickname:""})
 
   const handleSubmit = async event => {
     setIsLoading(true)
@@ -26,23 +27,23 @@ function HomePage() {
       return;
     }
     let data = await joinChat(event);
-    localStorage.setItem("userData", JSON.stringify(data));
+    debugger
+    setUserData(data)
     if(data){
       setIsJoined(true);
       setIsLoading(false)
     } else{
       // show alert
+      console.error("cannot join to chat")
     }
   };
 
 
   useEffect(() => {});
-  
-
 
 
   if (isJoined) {
-    return <Chat />;
+    return <Chat userData={userData} />;
   } else{
     return (
       <Fragment>
@@ -55,7 +56,7 @@ function HomePage() {
             <Formik
               validationSchema={schema}
               onSubmit={handleSubmit}
-              initialValues={JSON.parse(localStorage.getItem("userData") || "{}")}
+              initialValues={userData}
             >
               { ({
                 handleSubmit,

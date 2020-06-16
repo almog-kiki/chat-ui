@@ -17,7 +17,7 @@ const schema = yup.object({
   message: yup.string().required("Message is required"),
 });
 
-function Chat() {
+function Chat({userData}) {
   const [initialized, setInitialized] = useState(false);
   const [messages, setMessages] = useState([]);
 
@@ -29,7 +29,7 @@ function Chat() {
     try{
       const newMessage = Object.assign({}, values);
       newMessage.content = values.message;
-      newMessage.userId = Utils.getUserData().id;
+      newMessage.userId = userData.id;
       await sendNewMessage(newMessage);
     }
     catch (error) {
@@ -40,8 +40,8 @@ function Chat() {
 
   const connect = () => {
     socket.on("connect", data => {
-      console.log("connect to socket " ,Utils.getUserData())
-      socket.emit("join", Utils.getUserData());
+      console.log("connect to socket " ,userData)
+      socket.emit("join", userData);
     });
 
     socket.on("newMessage", data => {
@@ -51,7 +51,7 @@ function Chat() {
   };
 
   const getMessages = async () => {
-    const data = await getChatMessages(Utils.getUserData());
+    const data = await getChatMessages(userData);
     setMessages(data);
     setInitialized(true);
   };
@@ -111,8 +111,8 @@ function Chat() {
 
   return (
     <div className="chat-page">
-      <h1> Hello {Utils.getUserData().nickname}, have fun </h1>
-      <ChatMessages messages={messages} />
+      <h1> Hello {userData.nickname}, have fun </h1>
+      <ChatMessages messages={messages} userData={userData}/>
       {drawForm()}
     </div>
   );

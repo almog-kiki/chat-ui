@@ -5,10 +5,10 @@ import "./ChatMessages.css";
 
 const ME_MESSAGE_CLASS_NAME = "my-message"
 const USERS_MESSAGE_CLASS_NAME = "users-message"
-function ChatMessages(props) {
+function ChatMessages({userData, messages}) {
     
     const isMyMessage = (messaegs) =>{
-        if(messaegs.userId === Utils.getUserData().id){
+        if(messaegs.userId === userData.id){
             return true;
         }
         return false;
@@ -26,7 +26,7 @@ function ChatMessages(props) {
 
     return (
         <div className="chat-messaegs-container">
-            {props.messages.length>0 && props.messages.map( message => {
+            {messages.length>0 && messages.map( message => {
                 return (
                     message && message.User &&
                     <div className="col-12" key={message.id}>
@@ -48,7 +48,7 @@ function ChatMessages(props) {
                     </div>          
                 );
             })}
-            { !props.messages && <h3> No Messaegs </h3> }
+            { !messages && <h3> No Messaegs </h3> }
         </div>
     )
 }
